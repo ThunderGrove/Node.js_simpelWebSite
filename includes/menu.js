@@ -19,7 +19,7 @@ function menuGenerator(pageName){
     menuHTML+='<li class="last"><a href="/praktikvirksomheder">Praktikvirksomheder</a></li>';
   }
 
-  menuHTML+='<ul>';
+  menuHTML+='</ul>';
   return menuHTML;
 }
 

@@ -17,11 +17,26 @@ http.createServer(function(req,res){
     page="emner";
   }else if(pageReq.localeCompare("/praktikvirksomheder")==0){
     page="praktikvirksomheder";
+  }else{
+    page="index";
   }
 
   var menu=require('./includes/menu.js');
   res.write(menu.menuGenerator(page));
 
-  res.write('</div><div id="page"></div><div></body></html>');
+  res.write('</div><div id="page">');
+
+  var content;
+  if(page=="emner"){
+    content=require('./pages/emner.js');
+  }else if(page=="praktikvirksomheder"){
+    content=require('./pages/praktikvirksomheder.js');
+  }else{
+    content=require('./pages/index.js');
+  }
+
+  res.write(content.contentGenerator());
+
+  res.write('</div></div></body></html>');
   res.end();//end the response
 }).listen(8080); //the server object listens on port 8080
